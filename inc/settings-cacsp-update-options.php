@@ -549,6 +549,7 @@ elseif ( isset( $_POST['save_cacsp_settings_quickstart'] ) && $can_change_all ) 
 	update_option( 'cacsp_option_settings_policy_link', intval( $_POST['cacsp_option_settings_policy_link'] ) );
 	update_option( 'cacsp_option_settings_policy_link_url', cacsp_sanitize_domains( $_POST['cacsp_option_settings_policy_link_url'], false ) );
 	update_option( 'cacsp_option_settings_policy_link_target', intval( isset( $_POST['cacsp_option_settings_policy_link_target'] ) ) );
+	update_option( 'cacsp_option_wpengine_compatibility_mode', intval( isset( $_POST['cacsp_option_wpengine_compatibility_mode'] ) ));
 	echo '<div id="message" class="updated fade">
 		<p>' . __( 'Your settings are now updated', 'cookies-and-content-security-policy' ) . '</p>
 	</div>';
