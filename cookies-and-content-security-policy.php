@@ -36,7 +36,7 @@ function cacsp_check_activated() {
 }
 
 if ( !is_admin() && !get_cacsp_options( 'cacsp_option_only_csp' ) ) {
-	add_action( 'wp_enqueue_scripts', 'enqueue_cacsp_front', 11 );
+	add_action( 'wp_enqueue_scripts', 'enqueue_cacsp_front', 10 );
 	function enqueue_cacsp_front() {
 		if ( cacsp_option_actived() ) {
 			if ( !get_cacsp_options( 'cacsp_option_own_style' ) ) {
@@ -362,3 +362,5 @@ include_once( $cookies_and_cacsp_dir . 'inc/set-cacsp.php' );
 include_once( $cookies_and_cacsp_dir . 'inc/settings-cacsp.php' );
 
 include_once( $cookies_and_cacsp_dir . 'inc/modal-cacsp.php' );
+
+include_once( $cookies_and_cacsp_dir . 'inc/cache.php' );

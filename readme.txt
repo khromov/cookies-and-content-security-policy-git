@@ -56,7 +56,7 @@ After install, open a console (see screenshot 13) and see what is blocked by Con
 
 There are three scenarios where this can happen:
 
-* In some cases cookies are cached. It could be your hosting (for example WP Engine does this), then just contact them and ask them to uncache the cookies_and_content_security_policy cookie.
+* In some cases cookies are cached. It could be your hosting (for example WP Engine does this), then just contact them and ask them to uncache the cookies_and_content_security_policy cookie, or you can check "WP Engine compatibility mode" under Settings. 
 * In other cases it could be your cache plugin (for example Litespeed cache does this), then just review your settings. Read more in the next question in the FAQ that is all about cache plugins.
 * If you're using static page cache that doesn't go through php, go to Settings > Cookies and Content Security Policy > Settings and check Use meta under Advanced settings.
 
@@ -183,7 +183,9 @@ Go to the plugins folder, and in the folder *cookies-and-content-security-policy
 
 = 2.05 =
 
-* Support for custom WP Engine header, found in Settings. Thanks @khromov!
+* Support for custom WP Engine header, found in Settings. Thanks @khromov for adding this!
+* Tell WP Super Cache (if used) to cache requests with the cookie “Cookies and Content Security Policy” separately from other visitors. Thanks @mikewpdev for the suggestion!
+* Enqueue css earlier for easier overwrite in themes
 
 = 2.04 =
 
