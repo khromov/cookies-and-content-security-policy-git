@@ -12,14 +12,13 @@ if ( isset( $wp_load_path ) ) {
 }
 $cacsp_option_frames_js = '';
 $contentSecurityPolicyFrame = get_cacsp_options( 'cacsp_option_always_frames', true );
-
 $cookie_filter = false;
 
 if ( isset( $_COOKIE["cookies_and_content_security_policy"] ) ) {
 	$cookie_filter = str_replace( '\\', '', $_COOKIE['cookies_and_content_security_policy'] );
 }
 else if ( isset( $_SERVER["HTTP_X_WPENGINE_SEGMENT"] ) ) {
-	$cookie_filter = urldecode(str_replace( '\\', '', $_SERVER["HTTP_X_WPENGINE_SEGMENT"] ));
+	$cookie_filter = urldecode( str_replace( '\\', '', $_SERVER["HTTP_X_WPENGINE_SEGMENT"] ) );
 }
 
 if ( $cookie_filter ) {

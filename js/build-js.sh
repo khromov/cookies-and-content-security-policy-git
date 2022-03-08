@@ -1,0 +1,2 @@
+find ../../. -name "._*" -type f -delete
+curl -X POST -s --data-urlencode 'input@cookies-and-content-security-policy.js' https://javascript-minifier.com/raw > cookies-and-content-security-policy.min.js

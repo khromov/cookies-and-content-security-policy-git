@@ -9,14 +9,14 @@ jQuery(window).on("load", function() { // was $(window).load(function () {
 	openCookiesAndContentPolicySettingsHash();
 });
 
-var CACP_COOKIE_NAME = 'cookies_and_content_security_policy';
+var CACSP_COOKIE_NAME = 'cookies_and_content_security_policy';
 
-if(cacspMessages.cacspWpEngineCompatibilityMode === '1') {
-	CACP_COOKIE_NAME = 'wpe-us';
+if (cacspMessages.cacspWpEngineCompatibilityMode === '1') {
+	CACSP_COOKIE_NAME = 'wpe-us';
 }
 
 function cookiesAndContentPolicyModal() {
-	if (!Cookies.get(CACP_COOKIE_NAME) && !jQuery('body').hasClass('modal-cacsp-do-not-show-cookie-modal')) {
+	if (!Cookies.get(CACSP_COOKIE_NAME) && !jQuery('body').hasClass('modal-cacsp-do-not-show-cookie-modal')) {
 		// Shom info modal
 		timer = setTimeout(function () {
 			jQuery('html, body').addClass('modal-cacsp-open');
@@ -49,13 +49,13 @@ function cookiesAndContentPolicyModal() {
 	jQuery('.modal-cacsp-box-close').on('click', function() {
 		saveByClose = false;
 		// if close on info or if cookie doesn't exists
-		if (jQuery('.modal-cacsp-box.modal-cacsp-box-info').hasClass('modal-cacsp-box-show') || !Cookies.get(CACP_COOKIE_NAME)) {
+		if (jQuery('.modal-cacsp-box.modal-cacsp-box-info').hasClass('modal-cacsp-box-show') || !Cookies.get(CACSP_COOKIE_NAME)) {
 			jQuery('.modal-cacsp-box .modal-cacsp-box-settings-list ul li a').removeClass('modal-cacsp-toggle-switch-active');
 			saveByClose = true;
 		// if close on settings with cookie
-		} else if (Cookies.get(CACP_COOKIE_NAME)) {
+		} else if (Cookies.get(CACSP_COOKIE_NAME)) {
 			jQuery('.modal-cacsp-box.modal-cacsp-box-settings').removeClass('modal-cacsp-box-show');
-			jQuery('body').removeClass('modal-cacsp-open');
+			jQuery('html, body').removeClass('modal-cacsp-open');
 		// fallback
 		} else {
 			saveByClose = true;
@@ -78,8 +78,8 @@ function openCookiesAndContentPolicySettings(link) {
 	jQuery('.modal-cacsp-box.modal-cacsp-box-settings').addClass('modal-cacsp-box-show');
 	jQuery('html').removeClass('modal-cacsp-open-no-backdrop');
 	// Set the toggles according to the users settings
-	if (Cookies.get(CACP_COOKIE_NAME)) {
-		cookie_filter = JSON.parse(Cookies.get(CACP_COOKIE_NAME));
+	if (Cookies.get(CACSP_COOKIE_NAME)) {
+		cookie_filter = JSON.parse(Cookies.get(CACSP_COOKIE_NAME));
 		if (cookie_filter) {
 			jQuery.each(cookie_filter, function( index, value ) {
 				jQuery('.modal-cacsp-box .modal-cacsp-box-settings-list ul li a[data-accepted-cookie=' + value + ']').addClass('modal-cacsp-toggle-switch-active');
@@ -138,8 +138,7 @@ function saveCookiesAndContentPolicySettings() {
 				secure = true;
 			}
 			expires = parseInt(cacspMessages.cacspExpires);
-			Cookies.set(CACP_COOKIE_NAME, JSON.stringify(acceptedCookies), { expires: expires, sameSite: 'Lax', secure: secure });
-
+			Cookies.set(CACSP_COOKIE_NAME, JSON.stringify(acceptedCookies), { expires: expires, sameSite: 'Lax', secure: secure });
 			location.reload(true);
 	        return false;
 		});
@@ -148,8 +147,8 @@ function saveCookiesAndContentPolicySettings() {
 
 /* Check blocked iframes */
 function cookiesAndContentPolicyCheckBlockedIframe(iframe, adminEmail) {
-	if (Cookies.get(CACP_COOKIE_NAME)) {
-		cookie_filter = JSON.parse(Cookies.get(CACP_COOKIE_NAME));
+	if (Cookies.get(CACSP_COOKIE_NAME)) {
+		cookie_filter = JSON.parse(Cookies.get(CACSP_COOKIE_NAME));
 		if (cookie_filter) {
 			cookie_filter_length = cookie_filter.length;
 		}
@@ -177,8 +176,8 @@ function cookiesAndContentPolicyCheckBlockedIframe(iframe, adminEmail) {
 
 /* Check blocked objects */
 function cookiesAndContentPolicyCheckBlockedObject(object, adminEmail) {
-	if (Cookies.get(CACP_COOKIE_NAME)) {
-		cookie_filter = JSON.parse(Cookies.get(CACP_COOKIE_NAME));
+	if (Cookies.get(CACSP_COOKIE_NAME)) {
+		cookie_filter = JSON.parse(Cookies.get(CACSP_COOKIE_NAME));
 		if (cookie_filter) {
 			cookie_filter_length = cookie_filter.length;
 		}

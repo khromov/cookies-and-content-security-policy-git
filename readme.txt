@@ -5,7 +5,7 @@ Tags: cookie, cookies, cookie bar, cookie compliance, third-party cookies, gdpr,
 Requires at least: 5.0
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 2.03
+Stable tag: 2.04
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -180,6 +180,16 @@ Go to the plugins folder, and in the folder *cookies-and-content-security-policy
 13. Look in console to see what is blocked. In this case you'd probably like to add https://platform.twitter.com/ to Experience > Script. Or just use Quickstart and choose Twitter.
  
 == Changelog ==
+
+= 2.05 =
+
+* Support for custom WP Engine header, found in Settings. Thanks @khromov!
+
+= 2.04 =
+
+* Better Quickstart for YouTube
+* Bug fix for "Allow user to access site without saving settings" in Safari
+* Bug fix for "Possibility to add a close modal X" after closing modal scroll didn't appear
 
 = 2.03 =
 

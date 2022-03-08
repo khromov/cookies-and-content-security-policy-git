@@ -28,19 +28,17 @@ function set_content_security_policy() {
 		$cacsp_option_debug_text .= '<!-- We are bypassing and accepting all -->' . "\n";
 		setcookie( 'cookies_and_content_security_policy', $cacsp_bypass_cookie_value );
 	}
-
-	if ( isset( $_COOKIE["cookies_and_content_security_policy"] ) || isset($_SERVER["HTTP_X_WPENGINE_SEGMENT"]) || $cacsp_bypass == 'true' ) {
-		if ( $cacsp_option_debug ) {
+	if ( isset( $_COOKIE["cookies_and_content_security_policy"] ) || isset($_SERVER["HTTP_X_WPENGINE_SEGMENT"]) || $cacsp_bypass == 'true' ) {		if ( $cacsp_option_debug ) {
 			$cacsp_option_debug_text .= '<!-- We have Content Security Policy Cookie set -->' . "\n";
 		}
 		if ( $cacsp_bypass == 'true' ) {
 			$cookie_filter = $cacsp_bypass_cookie_value;
 		} else {
-			if($cacsp_option_wpengine_compatibility_mode === '1') {
+			if ( $cacsp_option_wpengine_compatibility_mode === '1' ) {
 				if ( $cacsp_option_debug ) {
 					$cacsp_option_debug_text .= '<!-- Using WP Engine compatibility mode -->' . "\n";
 				}
-				if(isset($_SERVER["HTTP_X_WPENGINE_SEGMENT"])) { 
+				if ( isset( $_SERVER["HTTP_X_WPENGINE_SEGMENT"] ) ) { 
 					$cookie_filter = urldecode(str_replace( '\\', '', $_SERVER["HTTP_X_WPENGINE_SEGMENT"]));
 				}
 			} else {

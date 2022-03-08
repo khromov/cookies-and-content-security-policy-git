@@ -3,7 +3,7 @@
 * Plugin Name: Cookies and Content Security Policy
 * Plugin URI: https://plugins.followmedarling.se/cookies-and-content-security-policy/
 * Description: Block cookies and unwanted external content by setting Content Security Policy. A modal will be shown on the front end to let the visitor choose what kind of resources to accept.
-* Version: 2.04
+* Version: 2.05
 * Author: Jonk @ Follow me Darling
 * Author URI: https://plugins.followmedarling.se/
 * Domain Path: /languages
@@ -277,11 +277,11 @@ function body_class_cacsp_front( $classes ) {
 	return $classes;
 }
 
-add_action('send_headers', 'send_headers_cacsp');
+add_action( 'send_headers', 'send_headers_cacsp' );
 function send_headers_cacsp() {
 	$wpEngineCompatibilityMode = get_cacsp_options( 'cacsp_option_wpengine_compatibility_mode', false, '' );
-	if($wpEngineCompatibilityMode === '1') {
-		header('Vary: X-WPENGINE-SEGMENT');
+	if ( $wpEngineCompatibilityMode === '1' ) {
+		header( 'Vary: X-WPENGINE-SEGMENT' );
 	}
 };
 

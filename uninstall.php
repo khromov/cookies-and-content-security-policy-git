@@ -86,7 +86,7 @@ $cacsp_options = array(
 	'cacsp_option_color_accept_button_border', 
 	'cacsp_option_color_accept_button_text', 
 	'cacsp_option_settings_expire', 
-	'cacsp_option_wpengine_compatibility_mode'
+	'cacsp_option_wpengine_compatibility_mode', 
 );
 
 foreach ( $cacsp_options as $cacsp_option ) {
