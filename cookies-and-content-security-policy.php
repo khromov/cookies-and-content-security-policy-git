@@ -3,7 +3,7 @@
 * Plugin Name: Cookies and Content Security Policy
 * Plugin URI: https://plugins.followmedarling.se/cookies-and-content-security-policy/
 * Description: Block cookies and unwanted external content by setting Content Security Policy. A modal will be shown on the front end to let the visitor choose what kind of resources to accept.
-* Version: 2.03
+* Version: 2.04
 * Author: Jonk @ Follow me Darling
 * Author URI: https://plugins.followmedarling.se/
 * Domain Path: /languages
@@ -84,6 +84,7 @@ if ( !is_admin() && !get_cacsp_options( 'cacsp_option_only_csp' ) ) {
 					'cacspNotAllowedDescription' => __( get_cacsp_options( 'cacsp_not_allowed_description', true, __( 'The content can\'t be loaded, since it is not allowed on the site.', 'cookies-and-content-security-policy' ), true ), 'cacspMessages'),
 					'cacspNotAllowedButton' => __( get_cacsp_options( 'cacsp_not_allowed_button', true, __( 'Contact the administrator', 'cookies-and-content-security-policy' ), true ), 'cacspMessages'),
 					'cacspExpires' => __( get_cacsp_options( 'cacsp_option_settings_expire', true, '365', true ), 'cacspMessages'),
+					'cacspWpEngineCompatibilityMode' => get_cacsp_options( 'cacsp_option_wpengine_compatibility_mode', false, '' ),
 				);
 				wp_localize_script('cookies-and-content-security-policy', 'cacspMessages', $array);
 			}
@@ -275,6 +276,14 @@ function body_class_cacsp_front( $classes ) {
 	}
 	return $classes;
 }
+
+add_action('send_headers', 'send_headers_cacsp');
+function send_headers_cacsp() {
+	$wpEngineCompatibilityMode = get_cacsp_options( 'cacsp_option_wpengine_compatibility_mode', false, '' );
+	if($wpEngineCompatibilityMode === '1') {
+		header('Vary: X-WPENGINE-SEGMENT');
+	}
+};
 
 if ( is_admin() ) {
 	add_action( 'admin_enqueue_scripts', 'enqueue_cacsp_back' );

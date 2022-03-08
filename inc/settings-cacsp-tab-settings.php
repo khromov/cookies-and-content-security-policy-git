@@ -31,6 +31,7 @@ $cacsp_option_settings_policy_link = get_cacsp_options( 'cacsp_option_settings_p
 $cacsp_option_settings_policy_link_url = get_cacsp_options( 'cacsp_option_settings_policy_link_url', false, '', true );
 $cacsp_option_settings_policy_link_target = get_cacsp_options( 'cacsp_option_settings_policy_link_target', false, '', true );
 $cacsp_option_settings_expire = get_cacsp_options( 'cacsp_option_settings_expire', true, '365', true );
+$cacsp_option_wpengine_compatibility_mode = get_cacsp_options( 'cacsp_option_wpengine_compatibility_mode', false, '', true );
 ?>
 <h2><?php _e( 'Settings', 'cookies-and-content-security-policy' ); ?></h2>
 <table class="form-table">
@@ -238,6 +239,18 @@ $cacsp_option_settings_expire = get_cacsp_options( 'cacsp_option_settings_expire
 					} ?>
 					<input type="checkbox" name="cacsp_option_no_x_csp" id="cacsp_option_no_x_csp" value="1"<?php echo $checked; ?>> 
 						<?php _e( 'Disable X-Content-Security-Policy.', 'cookies-and-content-security-policy' ); ?>
+				</label>
+				<br>
+				<label for="cacsp_option_wpengine_compatibility_mode">
+					<?php if ( $cacsp_option_wpengine_compatibility_mode ) {
+						$checked = ' checked';
+					} else {
+						$checked = '';
+					} ?>
+					<input type="checkbox" name="cacsp_option_wpengine_compatibility_mode" id="cacsp_option_wpengine_compatibility_mode" value="1"<?php echo $checked; ?>> 
+						<?php _e( 'WP Engine compatibility mode', 'cookies-and-content-security-policy' ); ?>
+						<br>
+						<small><?php _e( 'Enabling this will use the <a href="https://wpengine.com/support/personalization-user-segmentation-page-cache/" target="_blank">User Cache Segmentation</a> to set the cookie, which will allow this plugin to work with WP Engine caching. <strong>Do not enable this setting if you are not on WP Engine.</strong>.', 'cookies-and-content-security-policy' ); ?></small>
 				</label>
 			</fieldset>
 		</td>
