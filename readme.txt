@@ -151,6 +151,21 @@ This happens if you are using for example Bedrock by Roots.
 Go to the plugins folder, and in the folder *cookies-and-content-security-policy*, rename the file *cookies-and-content-security-policy-vars-sample.php* to *cookies-and-content-security-policy-vars.php* and save it to your plugins root folder (/plugins/). After that, change this line:
 *$wp_load_path = '/your/custom/path/to/wp-load.php';* so that the path reflects your server path to wp-load.php. The value can also be relative, like *../../../../wp/wp-load.php*.
 
+= How do I set up the SCSS and JavaScript build process locally? =
+
+Prerequisites:
+* [nvm](https://github.com/nvm-sh/nvm) (or the exact Node version listed in the file `.nvmrc`)
+
+Getting started:
+
+```
+nvm i # Install correct Node version
+nvm use # Set the correct Node version
+npm ci # Install dependencies
+npm run dev # Watch files for changes during development
+npm run build # For building for production
+```
+
 == Screenshots ==
  
 1. First modal, when using default colors.

@@ -56,7 +56,7 @@ if ( !is_admin() && !get_cacsp_options( 'cacsp_option_only_csp' ) ) {
 					cacsp_get_plugin_version(), 
 					true 
 				);
-				$cookies_and_cacsp_minified_js = true;
+				$cookies_and_cacsp_minified_js = defined('SCRIPT_DEBUG') ? SCRIPT_DEBUG : false;
 				if ( $cookies_and_cacsp_minified_js ) {
 					$cookies_and_cacsp_js = 'js/cookies-and-content-security-policy.min.js';
 				} else {
