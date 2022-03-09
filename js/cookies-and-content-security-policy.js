@@ -1,7 +1,3 @@
-jQuery(document).ready(function() {
-	
-});
-
 jQuery(window).on("load", function() { // was $(window).load(function () {
 	cookiesAndContentPolicyModal();
 	cookiesAndContentPolicyToggleSwitches();
